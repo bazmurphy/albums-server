@@ -1,18 +1,17 @@
 const express = require("express");
 const app = express();
-// const fs = require("fs");
 const PORT = 3000;
 const cors = require('cors');
 
 app.use(cors());
+
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+
 app.use(express.static('public'))
 
-
-// grabbed 3rd entry from:
+// grabbed 3rd object entry from:
 // https://itunes.apple.com/lookup?id=1419227&entity=album
-
 const albumsData = [
     {
       albumId: "10",
@@ -46,27 +45,26 @@ const albumsData = [
 ];
 
 app.get("/", function (req, res) {
+  // console.log("GET / route")
   res.sendFile(__dirname + '/index.html');
 })
   
 app.get("/albums", function (req, res) {
+  // console.log("GET /albums/ route")
     res.send(albumsData);
 });
 
 app.get("/albums/:albumId", function (req, res) {
+  // console.log("GET /albums/:albumId route")
   // console.log(req.params.albumId);
-  // req.params.albumId will match the value in the url after /albums/
   const album = albumsData.find(element => element.albumId = req.params.albumId);
-  // now we can use the value for req.params.albumId to find the album requested
-  // how do we "find" something in an array
   res.send(album);
-  // finish the code yourself - it should end with res.send(album) where album is the single album you found  based on the id
 });
 
 // POST 
 app.post("/albums", function(req, res) {
   // console.log("POST /albums route")
-  // console.log(request.body)
+  // console.log(req.body)
   let newAlbum = {
     albumId: (String(Number(albumsData[albumsData.length -1].albumId) + 1)),
     artistName: req.body.artistName,
@@ -81,6 +79,23 @@ app.post("/albums", function(req, res) {
   res.redirect('/')
 })
 
+app.delete("/albums/:albumId", function(req, res) {
+  // console.log("DELETE /albums/:albumId route");
+  // console.log(req.params.albumId)
+  const indexOfAlbumId = albumsData.findIndex(element => element.albumId === req.params.albumId);
+  if (indexOfAlbumId > -1) {
+    // console.log(`albumId ${req.params.albumId} is index ${indexOfAlbumId}`)
+    // console.log(`Array BEFORE DELETE: ${albumsData}`);
+    albumsData.splice(indexOfAlbumId, 1);
+    // console.log(`Array AFTER DELETE: ${albumsData}`);
+    res.status(200);
+    res.send({sucess: true});
+  } else {
+    // console.log(`albumId ${req.params.albumId} was not found`)
+    res.status(400);
+    res.send({success: false});
+  }
+})
 
 app.listen(process.env.PORT || PORT, function () {
     console.log(`The server is running on ${PORT}`);
