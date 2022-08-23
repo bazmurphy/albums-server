@@ -57,7 +57,7 @@ app.get("/albums", function (req, res) {
 app.get("/albums/:albumId", function (req, res) {
   // console.log("GET /albums/:albumId route")
   // console.log(req.params.albumId);
-  const album = albumsData.find(element => element.albumId = req.params.albumId);
+  const album = albumsData.find(element => element.albumId === req.params.albumId);
   res.send(album);
 });
 
