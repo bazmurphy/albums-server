@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Beyonce Albums API</title>
+</head>
+<body>
+    <div id="container">
+        <img src="beyonce.png" alt="beyonce on a horse">
+        <h1>Beyonce Albums API</h1>
+        <form action="/albums" method="post">
+            <h2>Add an Album</h2>
+            <label for="artistName">Artist Name:</label>
+            <input type="text" name="artistName" placeholder="Artist Name" required/>
+            <label for="collectionName">Collection Name:</label>
+            <input type="text" name="collectionName" placeholder="Collection Name" required/>
+            <label for="artworkUrl100">Artwork URL 100:</label>
+            <input type="text" name="artworkUrl100" placeholder="Artwork URL 100" required/>
+            <label for="releaseDate">Release Date:</label>
+            <input type="date" name="releaseDate" placeholder="Release Date" required/>
+            <label for="primaryGenreName">Primary Genre Name:</label>
+            <input type="text" name="primaryGenreName" placeholder="Primary Genre Name" required/>
+            <label for="url">URL:</label>
+            <input type="text" name="url" placeholder="URL" required/>
+            <button type="submit">Submit Album</button>
+        </form>
+        <a href="/albums" target="iframe">See All Albums</a>
+        <iframe name="iframe"></iframe>
+        <div>
+            <!-- info -->
+        </div>
+    </div>
+</body>
+</html>
