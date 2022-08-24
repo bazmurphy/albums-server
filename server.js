@@ -57,7 +57,7 @@ app.get("/albums", function (req, res) {
 app.get("/albums/:albumId", function (req, res) {
   // console.log("GET /albums/:albumId route")
   // console.log(req.params.albumId);
-  const album = albumsData.find(element => element.albumId === Number(req.params.albumId));
+  const album = albumsData.find(element => element.albumId === req.params.albumId);
   res.send(album);
 });
 
@@ -82,7 +82,7 @@ app.post("/albums", function(req, res) {
 app.delete("/albums/:albumId", function(req, res) {
   // console.log("DELETE /albums/:albumId route");
   // console.log(req.params.albumId)
-  const indexOfAlbumId = albumsData.findIndex(element => element.albumId === Number(req.params.albumId));
+  const indexOfAlbumId = albumsData.findIndex(element => element.albumId === req.params.albumId);
   if (indexOfAlbumId > -1) {
     // console.log(`albumId ${req.params.albumId} is index ${indexOfAlbumId}`)
     // console.log(`Array BEFORE DELETE: ${albumsData}`);
