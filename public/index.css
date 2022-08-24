@@ -9,10 +9,10 @@
 }
 
 body {
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
     background-color: hsla(344, 100%, 95%, 1);
     background-image: url("background.jpg");
     background-size: cover;
@@ -21,28 +21,27 @@ body {
 }
 
 #container {
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    width: 600px;
     padding: 0.5rem 1rem;
-    background-color: #ffc2d1b3;
-    background: linear-gradient(180deg, hsla(345, 100%, 88%, 0.7) 0%, hsla(0, 0%, 100%, 0.7) 70%);
     border: 0.15rem solid hsla(345, 100%, 78%, 0.75);
     border-radius: 0.25rem;
+    background-color: #ffc2d1b3;
+    background: linear-gradient(180deg, hsla(345, 100%, 88%, 0.7) 0%, hsla(0, 0%, 100%, 0.7) 70%);
 }
 
 #routes {
-    width: 100%;
     display: grid;
     grid-template-columns: 1fr 2fr 2.5fr 1.5fr;
     row-gap: 1rem;
     column-gap: 0.5rem;
     padding: 0.5rem;
-    background-color: hsla(345, 100%, 88%, 0.7);
     border: 0.15rem solid hsla(345, 100%, 78%, 0.75);
     border-radius: 0.25rem;
+    background-color: hsla(345, 100%, 88%, 0.7);
     font-size: 0.9rem;
 }
 
